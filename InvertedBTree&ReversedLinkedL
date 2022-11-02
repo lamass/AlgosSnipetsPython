@@ -1,0 +1,26 @@
+a --> b --> c --> d --> None
+d --> c --> b --> a --> None
+
+def reversedLinkedList(head):
+    new_head = None
+    curr = head
+    previous = None
+    while True:
+        tmp_curr = curr.next
+        curr.next = previous
+        previous = curr
+        
+        if not tmp_curr:
+            break
+        curr = tmp_curr
+        
+    return curr
+
+def invertBinaryTree(tree):
+    if tree:
+        left = tree.left
+        right = tree.right
+        tree.left = right
+        tree.right = left
+        invertBinaryTree(tree.left)
+        invertBinaryTree(tree.right)
